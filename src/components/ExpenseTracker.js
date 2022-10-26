@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import Expense from "./Expense";
 import TranscationHistory from "./TransactionHistory";
 import TranscationForm from "./TransactionForm";
-import { uniqueId } from "../utils";
+// import { uniqueId } from "../utils";
 
 // Aggregator componenet
 
@@ -41,11 +41,10 @@ function ExpenseTracker(){
     }
 
     const handleDeleteTransaction= id => {
-        const newTransactions = transactions.filter((item) => item.id != id);
+        const newTransactions = transactions.filter((item) => item.id !== id);
         setTransactions(newTransactions);
 
     }
-
     useEffect(() => {
         let localState = JSON.parse(localStorage.getItem('expenseTrackerState'));
         if (localState){
@@ -55,11 +54,13 @@ function ExpenseTracker(){
             calculateExpenses();
         }
         calculateExpenses();
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         
         calculateExpenses();
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [transactions]);
 
 
